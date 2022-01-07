@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/index.css">
+  <script src="../js/index.js"></script>
+  <title>首页</title>
+</head>
+
+<body>
+  <h1>首页标题</h1>
+  <hr>
+  <p>欢迎</p>
+  <br>
+  <button id="obtn">点击加载更多消息</button>
+  <!-- 点击button从服务器获取数据放到div中 -->
+  <div id="odiv"></div>
+  <script>
+    let button = document.getElementById('obtn');
+    let odiv = document.getElementById('odiv');
+    button.onclick = function () {
+      // 发送ajax请求
+      // 1.创建对象
+      let xhr = new XMLHttpRequest();
+      // 2.设置请求方式，路径
+      // 路径和看后端写的啥
+      xhr.open('GET', '/getData');
+
+      // 3.绑定监听处理函数
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          odiv.innerHTML = xhr.responseText;
+        }
+      }
+
+      // 4.发送请求
+      xhr.send();
+    }
+  </script>
+</body>
+
+</html>
