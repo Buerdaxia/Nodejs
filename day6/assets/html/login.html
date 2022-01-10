@@ -21,11 +21,25 @@
     button.onclick = function () {
       let username = document.getElementById('username').value;
       let password = document.getElementById('password').value;
+      let data = {
+        username,
+        password
+      }
+      // 往后端传递数据时不能直接传递一个对象
+      // 需要转换一下
       console.log(username, password);
 
       let xhr = new XMLHttpRequest();
-      xhr.open('POST', '');
-      xhr.onreadystat
+      xhr.open('POST', '/login_post');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // 成功之后的回调函数
+          odiv.innerHTML = xhr.responseText;
+        }
+      }
+      // 往后端传递数据时不能直接传递一个对象
+      // 需要转换一下
+      xhr.send(JSON.stringify(data));
     }
   </script>
 </body>
