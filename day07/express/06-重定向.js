@@ -30,10 +30,12 @@ app.post('/register', (req, res) => {
 	console.log(password);
 	console.log(repwd);
 
-	// 准备重定向
-	res.send('post');
+	// 准备重定向 点击注册按钮跳到login页面
+	// res.send('post');
+	res.redirect('/login');
 });
 
+// 展示登录页面
 app.get('/login', (req, res) => {
 	let filePath = path.join(__dirname, 'views', 'login.html');
 
