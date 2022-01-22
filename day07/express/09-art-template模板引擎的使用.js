@@ -6,6 +6,7 @@ const path = require('path');
 const app = new express();
 // 引入express-art-template,使用对应的引擎
 // view engine setup
+// html表示我们使用的html
 app.engine('html', require('express-art-template'));
 
 // 生产环境（线上）production
@@ -19,6 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 // 设置模板后缀名为html
 app.set('view engine', 'html');
 
+// 访问根目录时直接渲染index.html
 app.get('/', (req, res) => {
 	res.render('index');
 });

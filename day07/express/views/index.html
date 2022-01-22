@@ -11,6 +11,27 @@
 <body>
   <h1>首页内容</h1>
   <hr>
+  <!-- 获取data中普通的键值对儿 -->
+  <p>num1是：{{num1}}</p>
+  <p>num2是：{{num2}}</p>
+  <hr>
+  <!-- 获取data中的对象值 -->
+  <p>{{user.name}}</p>
+  <p>{{user.age}}</p>
+
+  <hr>
+  <ul>
+    {{each books}}
+    <!-- books 是数组名， $index是索引值，$value是数组元素值 -->
+    <li>{{ $index }}、{{ $value }}</li>
+    {{/each}}
+  </ul>
+
+  <hr>
+  <!-- 如果num1 > num2 就显示下面的p标签 -->
+  {{if num1 > num2 }}
+  <p>这个标签根据条件显示</p>
+  {{/if}}
 </body>
 
 </html>
