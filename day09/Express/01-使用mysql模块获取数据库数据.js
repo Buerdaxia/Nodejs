@@ -11,6 +11,11 @@ app.get('/get_data', (req, res) => {
     data: 查询出来的数据
   */
 	db.query('select * from students where gender = 1', (err, data) => {
+		if (err) {
+			console.log(err);
+			res.send('数据库查询出错');
+			return;
+		}
 		console.log(data);
 		// 3.对data进行处理
 		res.send(data);
