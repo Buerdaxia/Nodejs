@@ -1,4 +1,5 @@
-function handleDB() {
+const db = require('./nodejs-orm/index');
+function handleDB(res) {
 	console.log('handleDB');
 	// 创建model对象
 	let Students = db.model('students');
@@ -15,6 +16,7 @@ function handleDB() {
 		res.send({ errMsg: '数据库查询出错' });
 		return;
 	}
+	return result;
 }
 
 module.exports = {
