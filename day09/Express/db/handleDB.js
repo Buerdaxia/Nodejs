@@ -1,19 +1,20 @@
 const db = require('./nodejs-orm/index');
-function handleDB(res) {
-	console.log('handleDB');
+async function handleDB(res, errMsg, tableName, methodName, ...rest) {
+	console.log('handleDB', rest);
 	// 创建model对象
-	let Students = db.model('students');
+	let Model = db.model(tableName); // 1
 	let result;
 	// 如果成功 result接受 data
 	try {
 		result = await new Promise((resolve, reject) => {
-			Students.find((err, data) => {
+			// 应为rest是一个数组，然后我们展开
+			Model[methodName](...rest, (err, data) => {
 				if (err) reject(err);
 				resolve(data);
 			});
 		});
 	} catch (error) {
-		res.send({ errMsg: '数据库查询出错' });
+		res.send({ errMsg: errMsg });
 		return;
 	}
 	return result;
