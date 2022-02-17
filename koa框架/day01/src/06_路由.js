@@ -6,9 +6,9 @@ app.use(ctx => {
 	console.log(ctx);
 	// 1. ctx.request -> http请求
 	// 2. ctx.response -> http响应
-	if (ctx.request.url == '/%0A') {
+	if (ctx.request.url == '/') {
 		ctx.response.body = '这是主页';
-	} else if (ctx.request.url == '/users%0A') {
+	} else if (ctx.request.url == '/users') {
 		if (ctx.request.method == 'GET') {
 			ctx.response.body = '这是用户页';
 		} else if (ctx.request.method == 'POST') {
